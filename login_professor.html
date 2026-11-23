@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login do Professor | ceep.plg</title>
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style>
+    :root { color-scheme: dark; }
+    body { background-color: #09090b; color: #f4f4f5; font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; }
+  </style>
+</head>
+<body class="min-h-screen bg-[#09090b] text-zinc-100 flex items-center justify-center p-4 selection:bg-violet-600 selection:text-white">
+
+  <div class="w-full max-w-md rounded-3xl border border-white/10 bg-[#121215] p-8 shadow-2xl backdrop-blur-xl">
+    
+    <!-- Cabeçalho -->
+    <div class="text-center mb-8">
+      <div class="inline-grid size-12 place-items-center rounded-2xl bg-violet-600 text-white shadow-lg shadow-violet-950/50 mb-4">
+        <svg aria-hidden="true" class="size-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>
+      </div>
+      <p class="text-xs font-bold tracking-widest text-violet-400 uppercase mb-1">CEEP.PLG</p>
+      <h1 class="text-2xl font-bold tracking-tight text-white">Portal do Professor</h1>
+      <p class="text-sm text-zinc-400 mt-1">Entre com sua matrícula/SIAPE para acessar o painel docente.</p>
+    </div>
+
+    <!-- Formulário de Login -->
+    <form id="login-form" class="space-y-4">
+      <div>
+        <label class="block text-xs font-medium text-zinc-400 mb-1.5">Matrícula / SIAPE</label>
+        <input type="text" id="matricula" name="matricula" required placeholder="0000000" class="w-full h-12 rounded-xl border border-white/10 bg-white/[0.03] px-4 text-sm text-white placeholder-zinc-600 outline-none focus:border-violet-500 transition">
+      </div>
+
+      <div>
+        <div class="flex items-center justify-between mb-1.5">
+          <label class="block text-xs font-medium text-zinc-400">Senha</label>
+          <a href="esqueci_senha.html" class="text-xs text-violet-400 hover:text-violet-300 transition">Esqueceu a senha?</a>
+        </div>
+        <input type="password" id="senha" name="senha" required placeholder="••••••••" class="w-full h-12 rounded-xl border border-white/10 bg-white/[0.03] px-4 text-sm text-white placeholder-zinc-600 outline-none focus:border-violet-500 transition">
+      </div>
+
+      <button type="submit" id="btn-submit" class="w-full h-12 rounded-xl bg-violet-600 font-semibold text-white shadow-lg shadow-violet-950/30 hover:bg-violet-500 transition cursor-pointer mt-2">
+        Entrar no portal
+      </button>
+
+      <!-- Botão para escolher outro perfil -->
+      <div class="text-center pt-2">
+        <span class="text-xs text-zinc-500">Não é um professor? </span>
+        <a href="index.html" class="text-xs font-semibold text-violet-400 hover:text-violet-300 transition">
+          Escolha outro perfil
+        </a>
+      </div>
+    </form>
+
+    <!-- Erro/Feedback -->
+    <div id="error-msg" class="hidden mt-4 rounded-xl border border-rose-500/20 bg-rose-500/10 p-3 text-center text-xs font-medium text-rose-300"></div>
+
+  </div>
+
+  <script>
+    const form = document.getElementById("login-form");
+    const errorMsg = document.getElementById("error-msg");
+    const btnSubmit = document.getElementById("btn-submit");
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      errorMsg.classList.add("hidden");
+      btnSubmit.textContent = "Entrando...";
+      btnSubmit.disabled = true;
+
+      const formData = new FormData(form);
+
+      fetch("login.php", {
+        method: "POST",
+        body: formData
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.sucesso) {
+          // Salva os dados retornados pelo login.php no localStorage
+          localStorage.setItem("professor_logado", JSON.stringify(data.usuario));
+          window.location.href = data.redirecionar || "acessoprofessor.html";
+        } else {
+          errorMsg.textContent = data.mensagem || "Matrícula ou senha incorreta.";
+          errorMsg.classList.remove("hidden");
+          btnSubmit.textContent = "Entrar no portal";
+          btnSubmit.disabled = false;
+        }
+      })
+      .catch(() => {
+        errorMsg.textContent = "Erro de conexão com o servidor.";
+        errorMsg.classList.remove("hidden");
+        btnSubmit.textContent = "Entrar no portal";
+        btnSubmit.disabled = false;
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Portal CEEP</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="login-page">
+    <section class="visual-panel" aria-label="Chromebook da escola">
+      <img
+        src="foto do pc.JPG"
+        alt="Chromebook da escola em uma estante da biblioteca"
+      />
+      <div class="visual-shade"></div>
+
+      <div class="school-mark" aria-label="CEEP PLG">
+        <span class="mark-symbol" aria-hidden="true">
+          <i></i>
+        </span>
+        <span class="school-mark-name">CEEP | PLG</span>
+      </div>
+
+      <div class="visual-copy">
+        <h1>
+          Acesse o
+          <br />
+          <em>relatório de</em>
+          <br />
+          Chromebooks.
+        </h1>
+        <p>PLATAFORMA ACADÊMICA</p>
+      </div>
+    </section>
+
+    <section class="form-panel">
+      <div class="form-shell">
+        <div class="mobile-mark" aria-hidden="true">
+          <span class="mark-symbol">
+            <i></i>
+          </span>
+          <span>CEEP | PLG</span>
+        </div>
+
+        <header>
+          <p class="eyebrow">RELATÓRIO DE CHROMEBOOKS</p>
+          <h2 class="login-heading">
+            Bem-vindo
+            <br />
+            de volta.
+          </h2>
+          <p class="intro">
+            Entre com seus dados para acessar a plataforma.
+          </p>
+        </header>
+
+        <form id="login-form">
+          <label for="registration">MATRÍCULA</label>
+          <input
+            autocomplete="username"
+            class="registration-input"
+            id="registration"
+            inputmode="numeric"
+            name="registration"
+            placeholder="Ex: 2024001234"
+            required
+          />
+
+          <div class="password-heading">
+            <label for="password">SENHA</label>
+            <a
+              href="esqueci_senha.html"
+              class="text-action"
+              id="forgot-password-btn"
+            >
+              Esqueci minha senha
+            </a>
+          </div>
+
+          <div class="password-field">
+            <input
+              autocomplete="current-password"
+              id="password"
+              name="password"
+              placeholder="Digite sua senha"
+              type="password"
+              required
+            />
+            <button
+              aria-label="Mostrar senha"
+              class="password-toggle"
+              id="toggle-password-btn"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                fill="none"
+                height="22"
+                viewBox="0 0 24 24"
+                width="22"
+                id="eye-icon"
+              >
+                <path
+                  d="M2.5 12s3.45-5.5 9.5-5.5 9.5 5.5 9.5 5.5-3.45 5.5-9.5 5.5S2.5 12 2.5 12Z"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                />
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="2.7"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                />
+              </svg>
+            </button>
+          </div>
+
+          <button class="primary-button" id="btn-entrar" type="submit">
+            ENTRAR
+          </button>
+
+          <div class="divider" aria-hidden="true">
+            <span></span>
+            <small>ou</small>
+            <span></span>
+          </div>
+
+          <button
+            class="institutional-button"
+            id="institutional-btn"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              fill="none"
+              height="21"
+              viewBox="0 0 24 24"
+              width="21"
+            >
+              <rect
+                height="12.5"
+                rx="1.5"
+                stroke="currentColor"
+                stroke-width="1.6"
+                width="18"
+                x="3"
+                y="3.5"
+              />
+              <path
+                d="M9 20h6M12 16v4"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-width="1.6"
+              />
+            </svg>
+            <span>Acessar com e-mail institucional</span>
+          </button>
+
+          <p class="first-access">
+            Primeiro acesso?
+            <a href="Cadastro.html" class="text-action" id="activate-account-btn">
+              Ativar conta
+            </a>
+          </p>
+
+          <!-- Novo botão: Escolher outro perfil -->
+          <p class="first-access" style="margin-top: 0.5rem;">
+            Não é um aluno?
+            <a href="index.html" class="text-action" id="choose-profile-btn">
+              Escolha outro perfil
+            </a>
+          </p>
+
+          <p
+            aria-live="polite"
+            class="status-message"
+            id="status-message"
+          ></p>
+        </form>
+
+        <footer>
+          <span class="footer-copyright">© 2026 CEEPPLG</span>
+          <nav aria-label="Links auxiliares">
+            <button class="footer-privacy" type="button">
+              Privacidade
+            </button>
+            <button class="footer-support" type="button">
+              Suporte
+            </button>
+          </nav>
+        </footer>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const passwordInput = document.getElementById("password");
+    const registrationInput = document.getElementById("registration");
+    const togglePasswordBtn = document.getElementById("toggle-password-btn");
+    const eyeIcon = document.getElementById("eye-icon");
+    const statusMessage = document.getElementById("status-message");
+    const loginForm = document.getElementById("login-form");
+    const btnEntrar = document.getElementById("btn-entrar");
+
+    // Mostrar ou ocultar a senha.
+    togglePasswordBtn.addEventListener("click", () => {
+      const isPassword = passwordInput.type === "password";
+      passwordInput.type = isPassword ? "text" : "password";
+
+      if (isPassword) {
+        togglePasswordBtn.setAttribute("aria-label", "Ocultar senha");
+        eyeIcon.innerHTML = `
+          <path d="M2.5 12s3.45-5.5 9.5-5.5 9.5 5.5 9.5 5.5-3.45 5.5-9.5 5.5S2.5 12 2.5 12Z" stroke="currentColor" stroke-width="1.6" />
+          <circle cx="12" cy="12" r="2.7" stroke="currentColor" stroke-width="1.6" />
+          <path d="m4 4 16 16" stroke="currentColor" stroke-width="1.6" />
+        `;
+      } else {
+        togglePasswordBtn.setAttribute("aria-label", "Mostrar senha");
+        eyeIcon.innerHTML = `
+          <path d="M2.5 12s3.45-5.5 9.5-5.5 9.5 5.5 9.5 5.5-3.45 5.5-9.5 5.5S2.5 12 2.5 12Z" stroke="currentColor" stroke-width="1.6" />
+          <circle cx="12" cy="12" r="2.7" stroke="currentColor" stroke-width="1.6" />
+        `;
+      }
+    });
+
+    // Acesso institucional.
+    document.getElementById("institutional-btn").addEventListener("click", () => {
+      statusMessage.textContent =
+        "O acesso institucional estará disponível em breve.";
+      statusMessage.style.color = "#a1a1aa";
+    });
+
+    // Envio do formulário para login.php.
+    loginForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const registration = registrationInput.value.trim();
+      const password = passwordInput.value;
+
+      if (!registration || !password) {
+        statusMessage.textContent =
+          "Preencha a matrícula e a senha para continuar.";
+        statusMessage.style.color = "#f87171";
+        return;
+      }
+
+      statusMessage.textContent = "Verificando credenciais...";
+      statusMessage.style.color = "#a1a1aa";
+      btnEntrar.disabled = true;
+
+      const formData = new FormData();
+      formData.append("matricula", registration);
+      formData.append("senha", password);
+
+      try {
+        const resposta = await fetch("login.php", {
+          method: "POST",
+          body: formData
+        });
+
+        const texto = await resposta.text();
+
+        console.log("Status HTTP:", resposta.status);
+        console.log("Resposta do servidor:", texto);
+
+        let data;
+
+        try {
+          data = JSON.parse(texto);
+        } catch (erroJSON) {
+          console.error("Erro ao interpretar JSON:", erroJSON);
+          throw new Error("O servidor não retornou um JSON válido.");
+        }
+
+        if (data.sucesso === true && resposta.ok) {
+          statusMessage.textContent = data.mensagem;
+          statusMessage.style.color = "#34d399";
+
+          if (!data.redirecionar) {
+            throw new Error("O servidor não informou o destino do login.");
+          }
+
+          setTimeout(() => {
+            window.location.href = data.redirecionar;
+          }, 1200);
+
+        } else {
+          statusMessage.textContent =
+            data.mensagem || "Não foi possível realizar o login.";
+
+          statusMessage.style.color = "#f87171";
+          btnEntrar.disabled = false;
+
+          if (data.sucesso === true && !resposta.ok) {
+            console.error(
+              "O PHP informou sucesso, mas retornou HTTP:",
+              resposta.status
+            );
+          }
+        }
+
+      } catch (erro) {
+        console.error("Erro detalhado no login:", erro);
+
+        statusMessage.textContent =
+          "Erro no sistema: " + erro.message;
+
+        statusMessage.style.color = "#f87171";
+        btnEntrar.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>

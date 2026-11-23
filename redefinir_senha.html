@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crie uma nova senha - CEEP</title>
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style>
+    :root { color-scheme: dark; }
+    body { background-color: #09090d; color: #ffffff; font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; }
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus {
+      -webkit-box-shadow: 0 0 0px 1000px #121116 inset !important;
+      -webkit-text-fill-color: #fff !important;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-[#09090d] text-white selection:bg-violet-600 selection:text-white">
+
+  <main class="min-h-screen overflow-hidden">
+    <div class="grid min-h-screen lg:grid-cols-[47.5%_52.5%]">
+      
+      <!-- Lado Esquerdo -->
+      <aside class="relative flex min-h-[460px] overflow-hidden border-b border-white/[0.07] px-6 py-10 sm:px-12 lg:min-h-screen lg:border-r lg:border-b-0 lg:px-16 lg:py-24">
+        <div class="absolute -top-[100px] -left-[100px] h-[450px] w-[450px] rounded-full bg-violet-700/12 blur-[130px] pointer-events-none" aria-hidden="true"></div>
+        <div class="relative z-10 flex w-full max-w-[660px] flex-col">
+          
+          <div class="inline-flex w-fit items-center gap-2.5 rounded-full border border-violet-400/15 bg-violet-500/[0.08] px-4 py-2 text-sm font-medium text-violet-100">
+            <svg class="h-[19px] w-[19px] text-violet-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 3.2 4.8 6v5.2c0 4.4 2.8 8.2 7.2 9.8 4.4-1.6 7.2-5.4 7.2-9.8V6L12 3.2Z" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="m9.2 12 1.8 1.8 3.9-4.1" />
+            </svg>
+            Recuperação protegida
+          </div>
+
+          <div class="mt-10 lg:mt-14">
+            <h1 class="max-w-[510px] text-5xl lg:text-6xl leading-[0.93] font-semibold tracking-[-0.065em]">
+              Volte ao<br>que <span class="bg-gradient-to-r from-white to-violet-300 bg-clip-text text-transparent">importa.</span>
+            </h1>
+            <p class="mt-8 max-w-[540px] text-base leading-7 text-white/48 sm:text-lg sm:leading-8">
+              Recupere o acesso à sua conta com segurança.<br class="hidden sm:block"> Crie uma nova senha forte para prosseguir.
+            </p>
+          </div>
+
+          <ol class="mt-12 grid grid-cols-3 gap-3 sm:mt-16">
+            <li>
+              <div class="mb-5 h-px bg-violet-400/35"></div>
+              <span class="text-white/40">01</span>
+              <p class="mt-2 text-xs leading-5 sm:text-sm text-white/34">Informe seu e-mail</p>
+            </li>
+            <li>
+              <div class="mb-5 h-px bg-violet-400/35"></div>
+              <span class="text-white/40">02</span>
+              <p class="mt-2 text-xs leading-5 sm:text-sm text-white/34">Verifique sua caixa</p>
+            </li>
+            <li>
+              <div class="mb-5 h-px bg-gradient-to-r from-violet-500 to-fuchsia-500"></div>
+              <span class="text-violet-300">03</span>
+              <p class="mt-2 text-xs leading-5 sm:text-sm text-white/80">Crie uma nova senha</p>
+            </li>
+          </ol>
+
+          <p class="mt-auto hidden pt-8 text-sm text-white/28 lg:block">
+            © 2026 ceep.plg. Segurança em primeiro lugar.
+          </p>
+        </div>
+      </aside>
+
+      <!-- Lado Direito (Formulário) -->
+      <section class="relative flex items-center justify-center px-6 py-14 sm:px-12 lg:px-20">
+        <div class="absolute -bottom-[100px] -right-[100px] h-[450px] w-[450px] rounded-full bg-fuchsia-600/8 blur-[130px] pointer-events-none" aria-hidden="true"></div>
+        <div class="relative z-10 w-full max-w-[640px]">
+          
+          <!-- Estado de Sucesso (Oculto por padrão) -->
+          <div id="success-view" class="hidden text-center">
+            <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-emerald-400/25 bg-emerald-400/10 text-emerald-400">
+              <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 3.2 4.8 6v5.2c0 4.4 2.8 8.2 7.2 9.8 4.4-1.6 7.2-5.4 7.2-9.8V6L12 3.2Z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="m9.2 12 1.8 1.8 3.9-4.1" />
+              </svg>
+            </div>
+            <p class="mt-8 text-sm font-semibold tracking-[0.24em] text-violet-300 uppercase">Senha atualizada</p>
+            <h2 class="mt-5 text-4xl font-semibold tracking-[-0.045em] sm:text-5xl">Tudo pronto!</h2>
+            <p class="mx-auto mt-5 max-w-md text-base leading-7 text-white/45">
+              Sua nova senha foi criada com sucesso. Agora você já pode acessar sua conta.
+            </p>
+            <button id="reset-btn" class="mt-10 flex w-full items-center justify-center gap-2.5 h-14 rounded-xl bg-violet-600 text-sm font-semibold text-white shadow-lg shadow-violet-950/40 hover:bg-violet-500 transition cursor-pointer" type="button">
+              Ir para o acesso →
+            </button>
+          </div>
+
+          <!-- Formulário Principal -->
+          <div id="form-view">
+            <p class="text-sm font-semibold tracking-[0.24em] text-violet-300 uppercase">Recuperar acesso</p>
+            <h2 class="mt-5 text-4xl sm:text-5xl leading-[1.04] font-semibold tracking-[-0.05em]">Crie uma nova senha</h2>
+            <p class="mt-5 max-w-[610px] text-base leading-7 text-white/45 sm:text-lg sm:leading-8">
+              Escolha uma senha forte e diferente das que você já usou anteriormente.
+            </p>
+
+            <form id="password-form" class="mt-10 space-y-6" novalidate>
+              
+              <!-- Campo Nova Senha -->
+              <div>
+                <label class="mb-3 block text-sm font-medium text-white/80" for="password">Nova senha</label>
+                <div id="password-shell" class="flex h-14 items-center gap-3 rounded-xl border border-white/10 px-4 bg-white/[0.035] transition-all focus-within:border-violet-500 focus-within:bg-violet-500/[0.04]">
+                  <svg class="h-5 w-5 shrink-0 text-white/28" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 3.2 4.8 6v5.2c0 4.4 2.8 8.2 7.2 9.8 4.4-1.6 7.2-5.4 7.2-9.8V6L12 3.2Z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m9.2 12 1.8 1.8 3.9-4.1" />
+                  </svg>
+                  <input id="password" type="password" placeholder="Digite sua nova senha" autocomplete="new-password" class="h-full min-w-0 flex-1 bg-transparent text-[15px] text-white outline-none placeholder:text-white/25">
+                  <button type="button" id="toggle-password" class="text-white/40 hover:text-white cursor-pointer">
+                    👁️
+                  </button>
+                </div>
+              </div>
+
+              <!-- Campo Confirmar Senha -->
+              <div>
+                <label class="mb-3 block text-sm font-medium text-white/80" for="confirmation">Confirme sua nova senha</label>
+                <div id="confirm-shell" class="flex h-14 items-center gap-3 rounded-xl border border-white/10 px-4 bg-white/[0.035] transition-all focus-within:border-violet-500 focus-within:bg-violet-500/[0.04]">
+                  <svg class="h-5 w-5 shrink-0 text-white/28" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 3.2 4.8 6v5.2c0 4.4 2.8 8.2 7.2 9.8 4.4-1.6 7.2-5.4 7.2-9.8V6L12 3.2Z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m9.2 12 1.8 1.8 3.9-4.1" />
+                  </svg>
+                  <input id="confirmation" type="password" placeholder="Digite a senha novamente" autocomplete="new-password" class="h-full min-w-0 flex-1 bg-transparent text-[15px] text-white outline-none placeholder:text-white/25">
+                  <button type="button" id="toggle-confirm" class="text-white/40 hover:text-white cursor-pointer">
+                    👁️
+                  </button>
+                </div>
+                <p id="error-msg" class="mt-2 text-sm text-rose-400 hidden">As senhas precisam ser iguais.</p>
+              </div>
+
+              <!-- Requisitos da Senha -->
+              <div class="rounded-2xl border border-white/[0.07] bg-white/[0.025] p-5">
+                <p class="mb-4 text-sm text-white/42">Sua senha deve conter:</p>
+                <ul class="grid gap-3 sm:grid-cols-2 text-sm">
+                  <li id="req-length" class="flex items-center gap-2.5 text-white/36 transition-colors">
+                    <span class="flex h-4 w-4 items-center justify-center rounded-full border border-current text-[10px]">✓</span> 8 caracteres
+                  </li>
+                  <li id="req-upper" class="flex items-center gap-2.5 text-white/36 transition-colors">
+                    <span class="flex h-4 w-4 items-center justify-center rounded-full border border-current text-[10px]">✓</span> Uma letra maiúscula
+                  </li>
+                  <li id="req-number" class="flex items-center gap-2.5 text-white/36 transition-colors">
+                    <span class="flex h-4 w-4 items-center justify-center rounded-full border border-current text-[10px]">✓</span> Um número
+                  </li>
+                  <li id="req-special" class="flex items-center gap-2.5 text-white/36 transition-colors">
+                    <span class="flex h-4 w-4 items-center justify-center rounded-full border border-current text-[10px]">✓</span> Um caractere especial
+                  </li>
+                </ul>
+              </div>
+
+              <button id="submit-btn" class="flex w-full items-center justify-center gap-2.5 h-14 rounded-xl bg-violet-600 text-sm font-semibold text-white shadow-lg shadow-violet-950/40 hover:bg-violet-500 transition cursor-pointer" type="submit">
+                <span id="btn-text">Criar nova senha →</span>
+              </button>
+            </form>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <script>
+    const passwordInput = document.getElementById("password");
+    const confirmInput = document.getElementById("confirmation");
+    const form = document.getElementById("password-form");
+    const errorMsg = document.getElementById("error-msg");
+    const formView = document.getElementById("form-view");
+    const successView = document.getElementById("success-view");
+    const resetBtn = document.getElementById("reset-btn");
+    const submitBtn = document.getElementById("submit-btn");
+    const btnText = document.getElementById("btn-text");
+
+    const reqLength = document.getElementById("req-length");
+    const reqUpper = document.getElementById("req-upper");
+    const reqNumber = document.getElementById("req-number");
+    const reqSpecial = document.getElementById("req-special");
+
+    const togglePassword = document.getElementById("toggle-password");
+    const toggleConfirm = document.getElementById("toggle-confirm");
+
+    // Capturar o token da URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const token = urlParams.get("token");
+
+    togglePassword.addEventListener("click", () => {
+      passwordInput.type = passwordInput.type === "password" ? "text" : "password";
+    });
+
+    toggleConfirm.addEventListener("click", () => {
+      confirmInput.type = confirmInput.type === "password" ? "text" : "password";
+    });
+
+    passwordInput.addEventListener("input", (e) => {
+      const val = e.target.value;
+      updateReq(reqLength, val.length >= 8);
+      updateReq(reqUpper, /[A-Z]/.test(val));
+      updateReq(reqNumber, /\d/.test(val));
+      updateReq(reqSpecial, /[^A-Za-z0-9]/.test(val));
+    });
+
+    function updateReq(el, isValid) {
+      if (isValid) {
+        el.className = "flex items-center gap-2.5 text-emerald-400 transition-colors";
+      } else {
+        el.className = "flex items-center gap-2.5 text-white/36 transition-colors";
+      }
+    }
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      if (!token) {
+        errorMsg.textContent = "Token de recuperação ausente ou inválido na URL.";
+        errorMsg.classList.remove("hidden");
+        return;
+      }
+
+      const pwd = passwordInput.value;
+      const conf = confirmInput.value;
+
+      const isValid = pwd.length >= 8 && /[A-Z]/.test(pwd) && /\d/.test(pwd) && /[^A-Za-z0-9]/.test(pwd);
+      const matches = pwd === conf && conf.length > 0;
+
+      if (!isValid || !matches) {
+        if (!matches) {
+          errorMsg.textContent = "As senhas precisam ser iguais.";
+          errorMsg.classList.remove("hidden");
+          document.getElementById("confirm-shell").classList.add("border-rose-400/70");
+        } else {
+          errorMsg.textContent = "A senha não atende a todos os requisitos mínimos.";
+          errorMsg.classList.remove("hidden");
+        }
+        return;
+      }
+
+      errorMsg.classList.add("hidden");
+      document.getElementById("confirm-shell").classList.remove("border-rose-400/70");
+
+      submitBtn.disabled = true;
+      submitBtn.classList.add("opacity-75", "cursor-wait");
+      btnText.textContent = "Salvando nova senha...";
+
+      try {
+        const formData = new FormData();
+        formData.append("token", token);
+        formData.append("senha", pwd);
+
+        const response = await fetch("redefinir_senha.php", {
+          method: "POST",
+          body: formData
+        });
+
+        const data = await response.json();
+
+        if (data.sucesso) {
+          formView.classList.add("hidden");
+          successView.classList.remove("hidden");
+        } else {
+          errorMsg.textContent = data.mensagem || "Erro ao redefinir a senha.";
+          errorMsg.classList.remove("hidden");
+        }
+      } catch (err) {
+        console.error("Erro de conexão:", err);
+        errorMsg.textContent = "Erro de conexão com o servidor. Tente novamente.";
+        errorMsg.classList.remove("hidden");
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.classList.remove("opacity-75", "cursor-wait");
+        btnText.textContent = "Criar nova senha →";
+      }
+    });
+
+    resetBtn.addEventListener("click", () => {
+      window.location.href = "login_aluno.html";
+    });
+  </script>
+</body>
+</html>

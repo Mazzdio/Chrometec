@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login de Administrador - CEEP.PLG</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style>
+    :root {
+      color-scheme: dark;
+    }
+    body {
+      background-color: #0c0d10;
+      color: #f1f5f9;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    .login-page {
+      display: grid;
+      min-height: 100vh;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 1024px) {
+      .login-page {
+        grid-template-columns: 1.15fr 0.85fr;
+      }
+    }
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus {
+      -webkit-box-shadow: 0 0 0px 1000px #17181c inset !important;
+      -webkit-text-fill-color: #fff !important;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-[#0c0d10] text-slate-100 selection:bg-violet-600 selection:text-white">
+
+  <main class="login-page relative min-h-screen overflow-hidden">
+    <!-- Luzes de ambiente (Orbs) -->
+    <div class="pointer-events-none absolute -left-40 -top-40 size-96 rounded-full bg-violet-600/15 blur-[120px]"></div>
+    <div class="pointer-events-none absolute -bottom-40 -right-40 size-96 rounded-full bg-indigo-600/10 blur-[120px]"></div>
+
+    <!-- Seção Esquerda (Identidade Visual) -->
+    <section class="relative hidden flex-col justify-center border-r border-white/8 bg-[#0c0d10] p-12 lg:flex lg:p-20" aria-labelledby="page-title">
+      <div class="max-w-xl">
+        <div class="inline-flex items-center gap-2 rounded-full border border-violet-500/20 bg-violet-500/10 px-3.5 py-1.5 text-xs font-semibold text-violet-400 mb-6">
+          <span class="size-2 rounded-full bg-violet-500"></span>
+          Portal Administrativo CEEP.PLG
+        </div>
+        <h1 id="page-title" class="text-5xl font-extrabold tracking-tight text-white xl:text-6xl leading-[1.1]">
+          Gestão de
+          <br />
+          <span class="text-violet-500">Equipamentos</span>
+        </h1>
+        <p class="mt-6 text-base text-slate-400 leading-relaxed">
+          Acesse o painel administrativo para liberar empréstimos, registrar devoluções e gerenciar usuários do sistema Chrometec.
+        </p>
+
+        <ul class="mt-10 space-y-4" aria-label="Recursos">
+          <li class="flex items-center gap-3 text-sm font-medium text-slate-300">
+            <span class="grid size-6 shrink-0 place-items-center rounded-full bg-violet-500/20 text-violet-400">
+              <svg viewBox="0 0 24 24" aria-hidden="true" class="size-3.5 fill-none stroke-current stroke-[2.5]" stroke-linecap="round" stroke-linejoin="round"><path d="m7 12.5 3.1 3L17.5 8"/></svg>
+            </span>
+            Controle em tempo real dos Chromebooks
+          </li>
+          <li class="flex items-center gap-3 text-sm font-medium text-slate-300">
+            <span class="grid size-6 shrink-0 place-items-center rounded-full bg-violet-500/20 text-violet-400">
+              <svg viewBox="0 0 24 24" aria-hidden="true" class="size-3.5 fill-none stroke-current stroke-[2.5]" stroke-linecap="round" stroke-linejoin="round"><path d="m7 12.5 3.1 3L17.5 8"/></svg>
+            </span>
+            Histórico completo de movimentações
+          </li>
+          <li class="flex items-center gap-3 text-sm font-medium text-slate-300">
+            <span class="grid size-6 shrink-0 place-items-center rounded-full bg-violet-500/20 text-violet-400">
+              <svg viewBox="0 0 24 24" aria-hidden="true" class="size-3.5 fill-none stroke-current stroke-[2.5]" stroke-linecap="round" stroke-linejoin="round"><path d="m7 12.5 3.1 3L17.5 8"/></svg>
+            </span>
+            Acesso exclusivo para gestores autorizados
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Seção Direita (Formulário de Login) -->
+    <section class="flex flex-col justify-center px-6 py-12 lg:px-16 xl:px-20" aria-label="Formulário de login administrativo">
+      <div class="mx-auto w-full max-w-md">
+
+        <header class="mb-8 flex items-center gap-3">
+          <div class="grid size-11 place-items-center rounded-xl border border-white/10 bg-[#141518] text-violet-400 shadow-sm">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="size-6 fill-none stroke-current stroke-1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </div>
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-wider text-violet-400">Área restrita</p>
+            <h2 class="text-2xl font-bold tracking-tight text-white">Login Administrador</h2>
+          </div>
+        </header>
+
+        <form id="login-form" class="space-y-5">
+          <!-- Matrícula / SIAPE -->
+          <div>
+            <label for="registration" class="block text-xs font-semibold tracking-wider text-slate-400 uppercase mb-1.5">Matrícula / SIAPE</label>
+            <input
+              type="text"
+              id="registration"
+              inputmode="numeric"
+              placeholder="Digite sua matrícula"
+              maxlength="12"
+              class="w-full rounded-xl border border-white/10 bg-[#141518] px-4 py-3.5 text-sm text-white placeholder-slate-500 outline-none transition focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20"
+              required
+            />
+          </div>
+
+          <!-- Senha -->
+          <div>
+            <div class="flex items-center justify-between mb-1.5">
+              <label for="password" class="block text-xs font-semibold tracking-wider text-slate-400 uppercase">Senha</label>
+              <a href="recuperar_senha.html" class="text-xs font-medium text-violet-400 hover:underline">Esqueceu a senha?</a>
+            </div>
+            <div class="relative">
+              <input
+                type="password"
+                id="password"
+                autocomplete="current-password"
+                placeholder="Digite sua senha"
+                class="w-full rounded-xl border border-white/10 bg-[#141518] px-4 py-3.5 pr-12 text-sm text-white placeholder-slate-500 outline-none transition focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20"
+                required
+              />
+              <button
+                type="button"
+                id="toggle-password"
+                aria-label="Mostrar senha"
+                class="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white cursor-pointer"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true" class="size-5 fill-none stroke-current stroke-1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.7 12s3.4-5.2 9.3-5.2S21.3 12 21.3 12s-3.4 5.2-9.3 5.2S2.7 12 2.7 12Z"/><circle cx="12" cy="12" r="2.3"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Mensagem de Erro -->
+          <p id="error-message" class="hidden rounded-xl border border-rose-500/20 bg-rose-500/10 px-4 py-3 text-xs font-semibold text-rose-400" role="alert"></p>
+
+          <!-- Botão de Envio -->
+          <button id="btn-submit" class="mt-2 flex w-full items-center justify-center gap-2 rounded-xl bg-[#8a38f5] py-4 text-sm font-bold text-white uppercase tracking-wider shadow-lg shadow-violet-950/40 transition hover:bg-[#7b23f2] cursor-pointer" type="submit">
+            <span>Entrar no Painel</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="size-4 fill-none stroke-current stroke-2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M14 7l5 5-5 5"/></svg>
+          </button>
+
+          <div class="pt-4 border-t border-white/8 flex flex-col gap-2 text-center text-xs text-slate-500">
+            <p>
+              Precisa cadastrar um gestor? <a href="Cadastro_adm.html" class="text-violet-400 hover:underline font-semibold">Criar conta ADM</a>
+            </p>
+            <p>
+              Não é administrador? <a href="index.html" class="text-violet-400 hover:underline font-semibold">Escolha outro perfil</a>
+            </p>
+          </div>
+        </form>
+
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const SERVIDOR_URL = "http://10.0.11.217";
+
+    const form = document.getElementById("login-form");
+    const registrationInput = document.getElementById("registration");
+    const passwordInput = document.getElementById("password");
+    const togglePasswordBtn = document.getElementById("toggle-password");
+    const errorMessage = document.getElementById("error-message");
+    const submitBtn = document.getElementById("btn-submit");
+
+    // Apenas números na Matrícula
+    if (registrationInput) {
+      registrationInput.addEventListener("input", (e) => {
+        e.target.value = e.target.value.replace(/\D/g, "");
+      });
+    }
+
+    // Mostrar/Ocultar Senha
+    if (togglePasswordBtn && passwordInput) {
+      togglePasswordBtn.addEventListener("click", () => {
+        passwordInput.type = passwordInput.type === "password" ? "text" : "password";
+      });
+    }
+
+    // Envio do Formulário de Login ADM
+    if (form) {
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        errorMessage.classList.add("hidden");
+
+        const matricula = registrationInput.value.trim();
+        const senha = passwordInput.value;
+
+        if (!matricula || !senha) {
+          errorMessage.textContent = "Preencha sua matrícula e senha.";
+          errorMessage.classList.remove("hidden");
+          return;
+        }
+
+        const formData = new FormData();
+        formData.append("matricula", matricula);
+        formData.append("senha", senha);
+
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.querySelector("span").textContent = "Autenticando...";
+        }
+
+        const urlDestino = window.location.hostname === "10.0.11.217"
+          ? "login.php"
+          : `${SERVIDOR_URL}/login.php`;
+
+        fetch(urlDestino, {
+          method: "POST",
+          body: formData
+        })
+        .then(res => {
+          if (!res.ok) throw new Error("Erro na comunicação com o servidor.");
+          return res.json();
+        })
+        .then(data => {
+          if (data.sucesso) {
+            // Salva os dados do usuário para o painel exibir o nome corretamente
+            if (data.usuario) {
+              localStorage.setItem("adm_logado", JSON.stringify(data.usuario));
+            }
+            window.location.href = data.redirecionar || "emprestimo_adm.html";
+          } else {
+            errorMessage.textContent = data.mensagem || "Matrícula ou senha incorreta.";
+            errorMessage.classList.remove("hidden");
+            if (submitBtn) {
+              submitBtn.disabled = false;
+              submitBtn.querySelector("span").textContent = "Entrar no Painel";
+            }
+          }
+        })
+        .catch(err => {
+          errorMessage.textContent = "Erro ao conectar ao servidor (10.0.11.217): " + err.message;
+          errorMessage.classList.remove("hidden");
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.querySelector("span").textContent = "Entrar no Painel";
+          }
+        });
+      });
+    }
+  </script>
+</body>
+</html>

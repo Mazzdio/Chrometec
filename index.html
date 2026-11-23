@@ -1,0 +1,269 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal de Acesso - CEEP</title>
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style>
+    /* Estilos complementares de fundo e efeitos visuais */
+    .background-grid {
+      background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+    .glow {
+      width: 400px;
+      height: 400px;
+      background: rgba(124, 58, 237, 0.12);
+      filter: blur(100px);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .glow-left {
+      top: -100px;
+      left: -100px;
+    }
+    .glow-right {
+      bottom: -100px;
+      right: -100px;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-[#070608] text-white selection:bg-violet-500 selection:text-white">
+  
+  <main class="relative min-h-screen overflow-hidden">
+    <div class="background-grid absolute inset-0 opacity-50"></div>
+    <div class="glow glow-left absolute"></div>
+    <div class="glow glow-right absolute"></div>
+
+    <div class="relative mx-auto flex min-h-screen w-full max-w-[1240px] flex-col px-6 py-8 sm:px-10 lg:px-12">
+      <!-- Cabeçalho -->
+      <header class="flex items-center justify-between">
+        <a href="#" class="group flex items-center gap-3" aria-label="Ceep">
+          <span class="grid size-9 place-items-center rounded-[11px] bg-violet-600 shadow-[0_0_24px_rgba(124,58,237,0.45)] transition-transform group-hover:rotate-6">
+            <span class="size-3.5 rotate-45 rounded-[3px] border-2 border-white"></span>
+          </span>
+          <span class="text-[15px] font-semibold tracking-[0.2em]">
+            Ceep
+          </span>
+        </a>
+
+        <span class="hidden items-center gap-2 text-xs text-zinc-500 sm:flex">
+          <span class="size-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399]"></span>
+          Ambiente seguro
+        </span>
+      </header>
+
+      <!-- Seção Principal -->
+      <section class="flex flex-1 flex-col justify-center py-16 lg:py-20">
+        <div class="mb-10 max-w-2xl lg:mb-14">
+          <div class="mb-5 flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-violet-400">
+            <span class="h-px w-8 bg-violet-500"></span>
+            Portal de acesso
+          </div>
+          <h1 class="text-balance text-4xl font-semibold leading-[1.08] tracking-[-0.04em] sm:text-5xl lg:text-[64px]">
+            Como você quer
+            <br />
+            <span class="text-zinc-500">acessar a plataforma?</span>
+          </h1>
+          <p class="mt-5 max-w-lg text-sm leading-6 text-zinc-400 sm:text-base">
+            Selecione o perfil que corresponde à sua função para continuar.
+          </p>
+        </div>
+
+        <!-- Grupo de Perfis -->
+        <div
+          class="grid gap-4 md:grid-cols-3"
+          role="radiogroup"
+          aria-label="Escolha seu perfil de acesso"
+          id="profile-group"
+        >
+          <!-- Perfil 1: Estudante -->
+          <button
+            type="button"
+            role="radio"
+            aria-checked="true"
+            data-profile="student"
+            data-title="Estudante"
+            class="profile-card group relative min-h-[250px] overflow-hidden rounded-2xl border p-6 text-left transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400 focus-visible:ring-offset-4 focus-visible:ring-offset-black sm:p-7 selected border-violet-500/80 bg-violet-950/40 cursor-pointer"
+          >
+            <span class="absolute right-5 top-5 font-mono text-[10px] text-zinc-600">01</span>
+            <span class="icon-box grid size-12 place-items-center rounded-xl border transition-colors border-violet-400/40 bg-violet-500 text-white shadow-[0_0_30px_rgba(124,58,237,0.4)]">
+              <svg viewBox="0 0 24 24" aria-hidden="true" class="size-7 fill-none stroke-current stroke-[1.5]">
+                <path d="m3 10 9-5 9 5-9 5-9-5Z"></path>
+                <path d="M7 12.5V17c2.8 2.1 7.2 2.1 10 0v-4.5M21 10v6"></path>
+              </svg>
+            </span>
+            <div class="mt-9">
+              <span class="text-[10px] font-semibold uppercase tracking-[0.2em] text-violet-400">Aprender</span>
+              <h2 class="mt-2 text-2xl font-medium tracking-[-0.02em]">Estudante</h2>
+              <p class="mt-3 max-w-[260px] text-sm leading-5 text-zinc-500 transition-colors group-hover:text-zinc-400">
+                Solicite um Chromebook e veja seu histórico de empréstimos. Lembre-se de estar atento ao horário da devolução!
+              </p>
+            </div>
+            <span class="arrow-box absolute bottom-6 right-6 grid size-8 place-items-center rounded-full border transition-all border-violet-400 bg-violet-500 text-white" aria-hidden="true">
+              <svg viewBox="0 0 20 20" class="size-4 fill-none stroke-current stroke-[1.5]">
+                <path d="M4 10h12M11 5l5 5-5 5"></path>
+              </svg>
+            </span>
+          </button>
+
+          <!-- Perfil 2: Professor -->
+          <button
+            type="button"
+            role="radio"
+            aria-checked="false"
+            data-profile="teacher"
+            data-title="Professor"
+            class="profile-card group relative min-h-[250px] overflow-hidden rounded-2xl border p-6 text-left transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400 focus-visible:ring-offset-4 focus-visible:ring-offset-black sm:p-7 border-white/10 bg-white/[0.035] hover:-translate-y-1 hover:border-violet-500/50 hover:bg-violet-950/20 cursor-pointer"
+          >
+            <span class="absolute right-5 top-5 font-mono text-[10px] text-zinc-600">02</span>
+            <span class="icon-box grid size-12 place-items-center rounded-xl border transition-colors border-white/10 bg-white/5 text-zinc-400 group-hover:border-violet-500/30 group-hover:text-violet-300">
+              <svg viewBox="0 0 24 24" aria-hidden="true" class="size-7 fill-none stroke-current stroke-[1.5]">
+                <circle cx="8" cy="8" r="3"></circle>
+                <path d="M3.5 19c.4-3.1 2-5 4.5-5s4.1 1.9 4.5 5M15 5h6v10h-5M16 9h3M16 12h3"></path>
+              </svg>
+            </span>
+            <div class="mt-9">
+              <span class="text-[10px] font-semibold uppercase tracking-[0.2em] text-violet-400">Ensinar</span>
+              <h2 class="mt-2 text-2xl font-medium tracking-[-0.02em]">Professor</h2>
+              <p class="mt-3 max-w-[260px] text-sm leading-5 text-zinc-500 transition-colors group-hover:text-zinc-400">
+                Organize turmas e acompanhe os Chromebooks, as devoluções e os eventos do mês.
+              </p>
+            </div>
+            <span class="arrow-box absolute bottom-6 right-6 grid size-8 place-items-center rounded-full border transition-all border-white/10 text-zinc-600 group-hover:border-violet-500/50 group-hover:text-violet-300" aria-hidden="true">
+              <svg viewBox="0 0 20 20" class="size-4 fill-none stroke-current stroke-[1.5]">
+                <path d="M4 10h12M11 5l5 5-5 5"></path>
+              </svg>
+            </span>
+          </button>
+
+          <!-- Perfil 3: Administrador -->
+          <button
+            type="button"
+            role="radio"
+            aria-checked="false"
+            data-profile="admin"
+            data-title="Administrador"
+            class="profile-card group relative min-h-[250px] overflow-hidden rounded-2xl border p-6 text-left transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400 focus-visible:ring-offset-4 focus-visible:ring-offset-black sm:p-7 border-white/10 bg-white/[0.035] hover:-translate-y-1 hover:border-violet-500/50 hover:bg-violet-950/20 cursor-pointer"
+          >
+            <span class="absolute right-5 top-5 font-mono text-[10px] text-zinc-600">03</span>
+            <span class="icon-box grid size-12 place-items-center rounded-xl border transition-colors border-white/10 bg-white/5 text-zinc-400 group-hover:border-violet-500/30 group-hover:text-violet-300">
+              <svg viewBox="0 0 24 24" aria-hidden="true" class="size-7 fill-none stroke-current stroke-[1.5]">
+                <path d="M12 3 5 6v5c0 4.7 2.7 8.2 7 10 4.3-1.8 7-5.3 7-10V6l-7-3Z"></path>
+                <path d="m9.2 12 1.8 1.8 3.8-4"></path>
+              </svg>
+            </span>
+            <div class="mt-9">
+              <span class="text-[10px] font-semibold uppercase tracking-[0.2em] text-violet-400">Gerenciar</span>
+              <h2 class="mt-2 text-2xl font-medium tracking-[-0.02em]">Administrador</h2>
+              <p class="mt-3 max-w-[260px] text-sm leading-5 text-zinc-500 transition-colors group-hover:text-zinc-400">
+                Configure a plataforma, usuários e permissões de acesso.
+              </p>
+            </div>
+            <span class="arrow-box absolute bottom-6 right-6 grid size-8 place-items-center rounded-full border transition-all border-white/10 text-zinc-600 group-hover:border-violet-500/50 group-hover:text-violet-300" aria-hidden="true">
+              <svg viewBox="0 0 20 20" class="size-4 fill-none stroke-current stroke-[1.5]">
+                <path d="M4 10h12M11 5l5 5-5 5"></path>
+              </svg>
+            </span>
+          </button>
+        </div>
+
+        <!-- Rodapé da seção com o Link Direto + Botão de continuar -->
+        <div class="mt-8 flex flex-col items-start justify-between gap-5 border-t border-white/[0.08] pt-6 sm:flex-row sm:items-center">
+          <p class="text-sm text-zinc-500">
+            Perfil selecionado:{" "}
+            <span class="font-medium text-zinc-200" id="selected-title-text">Estudante</span>
+          </p>
+
+          <!-- Link NATIVO do HTML que abre a tela de login correspondente -->
+          <a href="login_aluno.html" id="continue-link" class="w-full sm:w-auto block">
+            <button
+              type="button"
+              id="continue-btn"
+              class="group flex w-full items-center justify-center gap-3 rounded-xl bg-white px-6 py-3.5 text-sm font-semibold text-black transition-all hover:bg-violet-400 hover:shadow-[0_0_32px_rgba(167,139,250,0.28)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400 focus-visible:ring-offset-4 focus-visible:ring-offset-black sm:w-auto cursor-pointer"
+            >
+              Continuar como <span id="btn-profile-name">Estudante</span>
+              <svg
+                viewBox="0 0 20 20"
+                class="size-4 fill-none stroke-current stroke-2 transition-transform group-hover:translate-x-1"
+                aria-hidden="true"
+              >
+                <path d="M4 10h12M11 5l5 5-5 5"></path>
+              </svg>
+            </button>
+          </a>
+        </div>
+      </section>
+
+      <footer class="flex items-center justify-between text-[11px] text-zinc-600">
+        <span>© 2026 Ceep Lourdinha Guerra</span>
+        <a href="#" class="transition-colors hover:text-zinc-300">
+          Precisa de ajuda?
+        </a>
+      </footer>
+    </div>
+  </main>
+
+  <!-- Lógica JavaScript para atualizar os destinos e realizar o redirecionamento -->
+  <script>
+    const cards = document.querySelectorAll(".profile-card");
+    const selectedTitleText = document.getElementById("selected-title-text");
+    const btnProfileName = document.getElementById("btn-profile-name");
+    const continueLink = document.getElementById("continue-link");
+
+    let selectedProfile = "student";
+
+    cards.forEach((card) => {
+      card.addEventListener("click", () => {
+        cards.forEach((c) => {
+          c.setAttribute("aria-checked", "false");
+          c.classList.remove("selected", "border-violet-500/80", "bg-violet-950/40");
+          c.classList.add("border-white/10", "bg-white/[0.035]", "hover:-translate-y-1", "hover:border-violet-500/50", "hover:bg-violet-950/20");
+
+          const iconBox = c.querySelector(".icon-box");
+          iconBox.className = "icon-box grid size-12 place-items-center rounded-xl border transition-colors border-white/10 bg-white/5 text-zinc-400 group-hover:border-violet-500/30 group-hover:text-violet-300";
+          
+          const arrowBox = c.querySelector(".arrow-box");
+          arrowBox.className = "arrow-box absolute bottom-6 right-6 grid size-8 place-items-center rounded-full border transition-all border-white/10 text-zinc-600 group-hover:border-violet-500/50 group-hover:text-violet-300";
+        });
+
+        card.setAttribute("aria-checked", "true");
+        card.classList.remove("border-white/10", "bg-white/[0.035]", "hover:-translate-y-1", "hover:border-violet-500/50", "hover:bg-violet-950/20");
+        card.classList.add("selected", "border-violet-500/80", "bg-violet-950/40");
+
+        const activeIconBox = card.querySelector(".icon-box");
+        activeIconBox.className = "icon-box grid size-12 place-items-center rounded-xl border transition-colors border-violet-400/40 bg-violet-500 text-white shadow-[0_0_30px_rgba(124,58,237,0.4)]";
+
+        const activeArrowBox = card.querySelector(".arrow-box");
+        activeArrowBox.className = "arrow-box absolute bottom-6 right-6 grid size-8 place-items-center rounded-full border transition-all border-violet-400 bg-violet-500 text-white";
+
+        const title = card.getAttribute("data-title");
+        selectedProfile = card.getAttribute("data-profile");
+        selectedTitleText.textContent = title;
+        btnProfileName.textContent = title;
+
+        // Atualiza dinamicamente o link de destino
+        if (selectedProfile === "student") {
+          continueLink.href = "login_aluno.html";
+        } else if (selectedProfile === "teacher") {
+          continueLink.href = "login_professor.html";
+        } else if (selectedProfile === "admin") {
+          continueLink.href = "login_adm.html";
+        }
+      });
+    });
+
+    // Redirecionamento por JavaScript ao clicar no botão
+    const continueBtn = document.getElementById("continue-btn");
+    continueBtn.addEventListener("click", (e) => {
+      let targetUrl = "login_aluno.html";
+      if (selectedProfile === "teacher") targetUrl = "login_professor.html";
+      if (selectedProfile === "admin") targetUrl = "login_adm.html";
+      window.location.href = targetUrl;
+    });
+  </script>
+</body>
+</html>
